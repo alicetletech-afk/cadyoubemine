@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PTCAD Product Strategy</title>
+  <style>
+    :root{
+      --navy:#061b49;
+      --deep:#082a70;
+      --blue:#1268f3;
+      --sky:#62c7ff;
+      --ice:#eaf7ff;
+      --white:rgba(255,255,255,.84);
+      --glass:rgba(255,255,255,.16);
+      --border:rgba(255,255,255,.32);
+      --text:#0b1b3f;
+      --muted:#5b6f95;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(98,199,255,.42), transparent 28%),
+        radial-gradient(circle at 90% 18%, rgba(18,104,243,.33), transparent 32%),
+        linear-gradient(135deg, #f7fcff 0%, #e7f5ff 42%, #d9ecff 100%);
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+      background-image:linear-gradient(rgba(6,27,73,.055) 1px, transparent 1px),linear-gradient(90deg, rgba(6,27,73,.055) 1px, transparent 1px);
+      background-size:44px 44px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.8), transparent 78%);
+    }
+    .orb{position:fixed;border-radius:50%;filter:blur(18px);opacity:.55;z-index:-1;animation:float 9s ease-in-out infinite alternate}
+    .orb.one{width:300px;height:300px;background:var(--sky);right:-80px;top:120px}
+    .orb.two{width:220px;height:220px;background:var(--blue);left:-70px;bottom:10%}
+    @keyframes float{to{transform:translateY(-30px) translateX(20px)}}
+    .container{width:min(1180px,92vw);margin:auto}
+    header{padding:28px 0;position:sticky;top:0;z-index:20;backdrop-filter:blur(16px);background:rgba(234,247,255,.58);border-bottom:1px solid rgba(255,255,255,.45)}
+    nav{display:flex;justify-content:space-between;align-items:center;gap:20px}
+    .brand{font-weight:900;letter-spacing:.08em;color:var(--navy);font-size:22px}.brand span{color:var(--blue)}
+    .navlinks{display:flex;gap:18px;font-size:14px}.navlinks a{color:var(--muted);text-decoration:none}.navlinks a:hover{color:var(--blue)}
+    .hero{min-height:82vh;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:66px 0 44px}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;padding:9px 14px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.45);backdrop-filter:blur(14px);color:var(--deep);font-weight:700;font-size:13px;margin-bottom:22px}
+    h1{font-size:clamp(44px,7vw,88px);line-height:.95;color:var(--navy);letter-spacing:-.06em;margin-bottom:22px}
+    h1 .grad{background:linear-gradient(90deg,var(--blue),var(--sky));-webkit-background-clip:text;color:transparent}
+    .lead{font-size:clamp(18px,2vw,24px);line-height:1.55;color:#18335f;max-width:760px;margin-bottom:28px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap}.btn{padding:14px 18px;border-radius:16px;text-decoration:none;font-weight:800;border:1px solid rgba(18,104,243,.25);box-shadow:0 16px 45px rgba(18,104,243,.16)}
+    .btn.primary{background:linear-gradient(135deg,var(--deep),var(--blue));color:white}.btn.secondary{background:rgba(255,255,255,.52);color:var(--deep);backdrop-filter:blur(14px)}
+    .mirror-card{position:relative;border:1px solid var(--border);background:linear-gradient(145deg,rgba(255,255,255,.42),rgba(255,255,255,.12));backdrop-filter:blur(22px);border-radius:34px;padding:30px;box-shadow:0 30px 90px rgba(7,33,89,.18);overflow:hidden}
+    .mirror-card:before{content:"";position:absolute;inset:-50% -30%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.75) 47%,transparent 58%);transform:translateX(-55%) rotate(8deg);animation:shine 4.8s ease-in-out infinite}
+    @keyframes shine{50%,100%{transform:translateX(70%) rotate(8deg)}}
+    .panel-title{position:relative;font-size:21px;font-weight:900;color:var(--navy);margin-bottom:16px}.stat{position:relative;display:grid;gap:14px}.stat div{padding:18px;border-radius:22px;background:rgba(255,255,255,.52);border:1px solid rgba(255,255,255,.58)}
+    .stat strong{display:block;color:var(--blue);font-size:30px;margin-bottom:4px}.stat p{color:var(--muted);line-height:1.5}
+    section{padding:72px 0}.section-head{margin-bottom:28px;display:flex;justify-content:space-between;gap:24px;align-items:end}.kicker{color:var(--blue);font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:13px;margin-bottom:8px}.section-head h2{font-size:clamp(30px,4vw,52px);line-height:1.05;color:var(--navy);letter-spacing:-.04em}.section-head p{max-width:520px;color:var(--muted);line-height:1.65}
+    .grid{display:grid;gap:18px}.grid.two{grid-template-columns:repeat(2,1fr)}.grid.three{grid-template-columns:repeat(3,1fr)}.grid.four{grid-template-columns:repeat(4,1fr)}
+    .card{border:1px solid var(--border);background:linear-gradient(145deg,rgba(255,255,255,.64),rgba(255,255,255,.22));backdrop-filter:blur(18px);border-radius:26px;padding:24px;box-shadow:0 20px 60px rgba(8,42,112,.11);transition:.3s ease;position:relative;overflow:hidden}.card:hover{transform:translateY(-6px);box-shadow:0 26px 72px rgba(18,104,243,.18)}
+    .card h3{color:var(--navy);font-size:20px;margin-bottom:10px}.card p,.card li{color:#496184;line-height:1.58;font-size:15px}.card ul{padding-left:18px;display:grid;gap:7px}.tag{display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(18,104,243,.1);color:var(--deep);font-size:12px;font-weight:800;margin-bottom:12px}.dark{background:linear-gradient(135deg,var(--navy),#052d7d);color:white}.dark h3,.dark p,.dark li{color:white}.dark .tag{background:rgba(98,199,255,.18);color:var(--sky)}
+    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.5);box-shadow:0 24px 70px rgba(8,42,112,.12);background:rgba(255,255,255,.5);backdrop-filter:blur(18px)}
+    th,td{padding:18px 20px;text-align:left;border-bottom:1px solid rgba(8,42,112,.1);vertical-align:top}th{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;font-size:14px}td{color:#284067;line-height:1.55}tr:last-child td{border-bottom:0}.check{color:#0da66b;font-weight:900}.warn{color:#ff9f00;font-weight:900}.no{color:#db3a34;font-weight:900}
+    .funnel{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.funnel .card{min-height:250px}.pill-list{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.pill{padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.62);border:1px solid rgba(18,104,243,.16);font-size:13px;color:#284067}
+    .winning{padding:38px;border-radius:34px;background:linear-gradient(135deg,rgba(6,27,73,.96),rgba(18,104,243,.88));color:white;box-shadow:0 30px 80px rgba(6,27,73,.3);position:relative;overflow:hidden}.winning h2{font-size:clamp(30px,4vw,54px);letter-spacing:-.04em;margin-bottom:12px}.winning p{font-size:18px;line-height:1.7;color:rgba(255,255,255,.88);max-width:850px}
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease, transform .75s ease}.reveal.show{opacity:1;transform:translateY(0)}
+    footer{padding:34px 0;color:#60759b;text-align:center}
+    @media(max-width:900px){.hero,.grid.two,.grid.three,.grid.four,.funnel{grid-template-columns:1fr}.section-head{display:block}.navlinks{display:none}th,td{padding:14px 12px;font-size:13px}.table-wrap{overflow-x:auto}table{min-width:780px}section{padding:52px 0}}
+  </style>
+</head>
+<body>
+  <div class="orb one"></div><div class="orb two"></div>
+  <header>
+    <nav class="container">
+      <div class="brand">PT<span>CAD</span></div>
+      <div class="navlinks"><a href="#insight">Insight</a><a href="#position">Positioning</a><a href="#keywords">Keywords</a><a href="#funnel">Funnel</a><a href="#strategy">Strategy</a></div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="reveal">
+        <div class="eyebrow">H2 2026 Product Strategy · Search & Positioning</div>
+        <h1>PTCAD <span class="grad">Keyword Strategy</span></h1>
+        <p class="lead">วางตำแหน่ง PTCAD ให้ต่างจาก GstarCAD ชัดเจน โดยไม่แข่งกันเอง และใช้ Search Intent จาก “งานจริง” มากกว่า “ซอฟต์แวร์ CAD ระดับ Professional”</p>
+        <div class="hero-actions"><a class="btn primary" href="#keywords">ดู Keyword Strategy</a><a class="btn secondary" href="#strategy">ดู Winning Strategy</a></div>
+      </div>
+      <div class="mirror-card reveal">
+        <div class="panel-title">Strategic Direction</div>
+        <div class="stat">
+          <div><strong>GstarCAD</strong><p>Professional CAD · จับกลุ่มคนที่รู้จัก CAD และกำลังเปรียบเทียบซอฟต์แวร์</p></div>
+          <div><strong>PTCAD</strong><p>Thai-Owned 2D CAD Solution for Everyday Drafting & Local Workflows</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insight" class="reveal">
+      <div class="section-head"><div><div class="kicker">01 · Market Insight</div><h2>สิ่งที่พบจาก Search Report</h2></div><p>GstarCAD ได้ Traffic จากกลุ่มที่รู้จัก CAD อยู่แล้ว เช่น AutoCAD, CAD Software, Trial, License, DWG และ Download</p></div>
+      <div class="grid three">
+        <div class="card dark"><span class="tag">GstarCAD Intent</span><h3>Professional CAD Selection</h3><p>ผู้ใช้กำลังเปรียบเทียบซอฟต์แวร์ CAD ระดับมืออาชีพ หรือมองหาทางเลือกแทน AutoCAD</p></div>
+        <div class="card"><span class="tag">Risk</span><h3>ถ้า PTCAD ชนคำเดิม</h3><ul><li>แข่งกับ GstarCAD เอง</li><li>CPC มีโอกาสสูง</li><li>CTR อาจไม่ชัด เพราะ Positioning ซ้อนกัน</li></ul></div>
+        <div class="card"><span class="tag">Opportunity</span><h3>PTCAD ควรจับ Problem-based Search</h3><p>เน้นคำค้นจากงาน เช่น เขียนแบบบ้าน ร้านค้า โรงงาน ไฟฟ้า เฟอร์นิเจอร์ มากกว่าคำว่า CAD Software ตรง ๆ</p></div>
+      </div>
+    </section>
+
+    <section id="position" class="reveal">
+      <div class="section-head"><div><div class="kicker">02 · Positioning</div><h2>แยกบทบาทของสองแบรนด์</h2></div><p>ไม่ต้องให้ PTCAD เป็นอีกตัวเลือกของ Professional CAD แต่ให้เป็นทางเลือกสำหรับงานเขียนแบบ 2D ที่ใช้งานจริงของคนไทย</p></div>
+      <div class="table-wrap"><table>
+        <tr><th>Topic</th><th>GstarCAD</th><th>PTCAD</th></tr>
+        <tr><td>Positioning</td><td>Professional CAD</td><td>Thai-Owned 2D CAD Solution for Everyday Drafting & Local Workflows</td></tr>
+        <tr><td>Target</td><td>Professional, Engineer, Enterprise, CAD Power Users</td><td>SME, General Business, First-time CAD Users, Everyday 2D Users</td></tr>
+        <tr><td>Core Value</td><td>Performance, Advanced Features, Compatibility</td><td>Simple, Easy, Affordable, Local Workflow, Thai Support</td></tr>
+        <tr><td>Search Intent</td><td>Product-first Search</td><td>Problem-first Search</td></tr>
+        <tr><td>Buying Journey</td><td>Compare → Trial → Demo → Purchase</td><td>Search → Learn → Try / Buy → Use</td></tr>
+      </table></div>
+    </section>
+
+    <section id="keywords" class="reveal">
+      <div class="section-head"><div><div class="kicker">03 · Keyword Strategy</div><h2>Keyword ที่ควรถือคนละชุด</h2></div><p>PTCAD ควรสร้างพื้นที่ของตัวเองด้วย Long-tail, Local Workflow, SME และ Pain Point Keywords</p></div>
+      <div class="table-wrap"><table>
+        <tr><th>Keyword Group</th><th>GstarCAD ควรถือ</th><th>PTCAD ควรถือ</th></tr>
+        <tr><td>Brand</td><td>GstarCAD, GstarCAD ราคา, GstarCAD Trial</td><td>PTCAD, ราคา PTCAD, ทดลองใช้ PTCAD</td></tr>
+        <tr><td>Professional</td><td>AutoCAD Alternative, Professional CAD, CAD Software, CAD Platform</td><td>หลีกเลี่ยง / ใช้อย่างระมัดระวัง</td></tr>
+        <tr><td>Everyday 2D</td><td>ใช้ได้เป็นรอง</td><td>โปรแกรมเขียนแบบ 2D, โปรแกรมเขียนแบบง่าย, โปรแกรม CAD ใช้งานง่าย</td></tr>
+        <tr><td>Local Workflow</td><td>ไม่ใช่แกนหลัก</td><td>โปรแกรม CAD ภาษาไทย, โปรแกรมเขียนแบบสำหรับคนไทย, โปรแกรมเขียนแบบมาตรฐานไทย</td></tr>
+        <tr><td>SME / Business</td><td>ใช้เฉพาะ Enterprise</td><td>โปรแกรม CAD สำหรับ SME, โปรแกรมเขียนแบบสำหรับธุรกิจ, โปรแกรม CAD ซื้อขาด</td></tr>
+        <tr><td>Pain Point</td><td>ยังไม่จับชัด</td><td>โปรแกรมเขียนแบบบ้าน, ร้านค้า, โกดัง, โรงงาน, ไฟฟ้า, เฟอร์นิเจอร์</td></tr>
+      </table></div>
+    </section>
+
+    <section class="reveal">
+      <div class="section-head"><div><div class="kicker">04 · PTCAD Priority</div><h2>ลำดับคีย์เวิร์ดที่ควรเริ่มก่อน</h2></div></div>
+      <div class="grid four">
+        <div class="card dark"><span class="tag">Priority 1</span><h3>Core</h3><ul><li>โปรแกรมเขียนแบบ 2D</li><li>โปรแกรมเขียนแบบ DWG</li><li>โปรแกรม CAD ภาษาไทย</li><li>โปรแกรม CAD ใช้งานง่าย</li><li>โปรแกรม CAD ซื้อขาด</li></ul></div>
+        <div class="card"><span class="tag">Priority 2</span><h3>Commercial</h3><ul><li>โปรแกรม CAD สำหรับ SME</li><li>โปรแกรมเขียนแบบสำหรับธุรกิจ</li><li>โปรแกรม CAD สำหรับบริษัท</li><li>โปรแกรมเขียนแบบพื้นฐาน</li></ul></div>
+        <div class="card"><span class="tag">Priority 3</span><h3>Brand</h3><ul><li>PTCAD</li><li>ราคา PTCAD</li><li>ทดลองใช้ PTCAD</li><li>ดาวน์โหลด PTCAD</li><li>ซื้อ PTCAD</li></ul></div>
+        <div class="card"><span class="tag">Priority 4</span><h3>Future Plug-ins</h3><ul><li>โปรแกรมเขียนแบบไฟฟ้า</li><li>Template CAD ไทย</li><li>Title Block ไทย</li><li>โปรแกรมเขียนแบบโครงสร้าง</li></ul></div>
+      </div>
+    </section>
+
+    <section id="funnel" class="reveal">
+      <div class="section-head"><div><div class="kicker">05 · Search Funnel</div><h2>จัดคีย์เวิร์ดตาม Journey</h2></div></div>
+      <div class="funnel">
+        <div class="card"><span class="tag">TOFU · Awareness</span><h3>เริ่มรู้ปัญหา</h3><div class="pill-list"><span class="pill">โปรแกรมเขียนแบบคืออะไร</span><span class="pill">โปรแกรมเขียนแบบ 2D</span><span class="pill">โปรแกรมเขียนแบบบ้าน</span><span class="pill">โปรแกรมเขียนแบบฟรี</span></div></div>
+        <div class="card dark"><span class="tag">MOFU · Consideration</span><h3>เริ่มเลือกทางออก</h3><div class="pill-list"><span class="pill">โปรแกรมเขียนแบบซื้อขาด</span><span class="pill">โปรแกรม CAD ภาษาไทย</span><span class="pill">โปรแกรมเขียนแบบสำหรับธุรกิจ</span><span class="pill">โปรแกรมเขียนแบบ DWG</span></div></div>
+        <div class="card"><span class="tag">BOFU · Purchase</span><h3>พร้อมทดลอง / ซื้อ</h3><div class="pill-list"><span class="pill">ราคา PTCAD</span><span class="pill">ซื้อ PTCAD</span><span class="pill">ทดลองใช้ PTCAD</span><span class="pill">ดาวน์โหลด PTCAD</span></div></div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <div class="section-head"><div><div class="kicker">06 · Avoid Cannibalization</div><h2>Keyword ที่ไม่ควรชน GstarCAD</h2></div><p>กลุ่มนี้เป็น Intent ที่ GstarCAD เก็บอยู่แล้ว และผู้ใช้มักกำลังเปรียบเทียบ CAD ระดับ Professional</p></div>
+      <div class="grid four">
+        <div class="card"><h3>❌ AutoCAD Alternative</h3><p>เหมาะกับ GstarCAD มากกว่า</p></div>
+        <div class="card"><h3>❌ Professional CAD</h3><p>ชน Positioning โดยตรง</p></div>
+        <div class="card"><h3>❌ CAD Software</h3><p>Generic สูง แข่งหนัก</p></div>
+        <div class="card"><h3>❌ CAD Download / Trial</h3><p>ใช้เฉพาะ Brand PTCAD เท่านั้น</p></div>
+      </div>
+    </section>
+
+    <section id="strategy" class="reveal">
+      <div class="winning">
+        <div class="kicker" style="color:#62c7ff">Winning Strategy</div>
+        <h2>Search จาก “งาน” มากกว่า “โปรแกรม”</h2>
+        <p>แทนที่ PTCAD จะพยายามเป็นอีกตัวเลือกของ CAD Professional ให้สร้างภาพจำว่า PTCAD คือโปรแกรมเขียนแบบ 2D สำหรับการทำงานจริงของคนไทย แล้วใช้ Search Intent จากงาน เช่น บ้าน ร้านค้า โกดัง โรงงาน ไฟฟ้า เฟอร์นิเจอร์ และตกแต่งภายใน เพื่อสร้างพื้นที่ของตัวเองโดยไม่ต้องชนกับ GstarCAD โดยตรง และต่อยอดไปสู่ Plug-in เฉพาะงานในอนาคตได้</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>PTCAD H2 2026 · Product Strategy Page</footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('show'); });
+    },{threshold:.14});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
