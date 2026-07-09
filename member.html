@@ -37,7 +37,7 @@
     .icon-btn{width:42px;height:42px;border:1px solid transparent;border-radius:14px;display:grid;place-items:center;color:#23345f;background:#fff}.icon-btn:hover{border-color:var(--line);background:var(--soft)}
     .account{height:46px;border:1px solid var(--line);border-radius:14px;display:flex;align-items:center;gap:10px;padding:0 14px 0 10px;background:#fff;font-weight:800;color:#102b76;position:relative;cursor:pointer}
     .avatar{width:32px;height:32px;border-radius:11px;background:linear-gradient(145deg,#dff3ff,#1765ff);display:grid;place-items:center;color:#fff;font-weight:900}
-    .dropdown{position:absolute;right:0;top:58px;width:250px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px rgba(20,53,143,.16);padding:12px;display:none;z-index:50}.account:hover .dropdown{display:block}
+    .dropdown{position:absolute;right:0;top:58px;width:250px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 22px 60px rgba(20,53,143,.16);padding:12px;display:none;z-index:50}.account.open .dropdown{display:block}
     .dropdown-head{padding:10px 10px 12px;border-bottom:1px solid var(--line);margin-bottom:8px}.dropdown-head b{display:block}.dropdown-head span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
     .drop-link{height:42px;border-radius:12px;display:flex;align-items:center;gap:10px;padding:0 10px;color:#344054;font-size:14px;font-weight:700}.drop-link:hover{background:var(--soft);color:var(--blue)}.drop-link.signout{color:var(--red);border-top:1px solid var(--line);border-radius:0;margin-top:6px;padding-top:12px;height:48px}
     .primary-btn,.secondary-btn{height:46px;padding:0 24px;border-radius:12px;font-weight:800;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:10px;cursor:pointer}.primary-btn{border:0;background:linear-gradient(135deg,var(--blue),#0d57df);color:#fff;box-shadow:0 12px 24px rgba(23,101,255,.22)}.secondary-btn{border:1.5px solid var(--blue);background:#fff;color:var(--blue)}
@@ -83,7 +83,7 @@
         </nav>
         <div class="search"><i data-lucide="search" size="18"></i><span>ค้นหาอะไรก็ได้...</span></div>
         <a class="icon-btn" href="cart.html" aria-label="Cart"><i data-lucide="shopping-cart" size="22"></i></a>
-        <div class="account">
+        <div class="account" id="accountMenu" role="button" tabindex="0" aria-expanded="false">
           <span class="avatar">G</span><span>Gyokoi</span><i data-lucide="chevron-down" size="16"></i>
           <div class="dropdown">
             <div class="dropdown-head"><b>Gyokoi Tamonwan</b><span>gyokoi@example.com</span></div>
@@ -236,6 +236,36 @@
       </footer>
     </div>
   </div>
+  
+<script>
+  const accountMenu = document.getElementById('accountMenu');
+  if (accountMenu) {
+    accountMenu.addEventListener('click', function(e) {
+      e.stopPropagation();
+      this.classList.toggle('open');
+      this.setAttribute('aria-expanded', this.classList.contains('open') ? 'true' : 'false');
+    });
+
+    accountMenu.querySelectorAll('.dropdown a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    });
+
+    document.addEventListener('click', function() {
+      accountMenu.classList.remove('open');
+      accountMenu.setAttribute('aria-expanded', 'false');
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        accountMenu.classList.remove('open');
+        accountMenu.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
   <script>lucide.createIcons();</script>
 </body>
 </html>
