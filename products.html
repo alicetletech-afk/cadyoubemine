@@ -236,6 +236,33 @@
     .cta-strip{background:linear-gradient(135deg,#0c2c82,#1765ff);color:white;border-radius:26px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:24px;overflow:hidden;position:relative}
     .cta-strip:after{content:"";position:absolute;right:-80px;bottom:-100px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.12)}
     .cta-strip h2{color:white}.cta-strip p{color:rgba(255,255,255,.76);margin:8px 0 0;line-height:1.6}.cta-strip .secondary-btn{background:white}
+    .catalog-wrap{display:grid;gap:34px}
+    .catalog-section{background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:0 12px 34px rgba(20,53,143,.05)}
+    .catalog-head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:22px}
+    .catalog-title{display:flex;gap:14px;align-items:center}
+    .catalog-icon{width:52px;height:52px;border-radius:17px;background:#eef6ff;color:var(--blue);display:grid;place-items:center;flex:none}
+    .catalog-title h3{margin:0;font-size:26px;color:#102b76;letter-spacing:-.4px}
+    .catalog-title p{margin:4px 0 0;color:var(--muted);font-size:14px;line-height:1.5}
+    .catalog-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(245px,1fr);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 4px 14px;margin:0 -4px}
+    .catalog-row::-webkit-scrollbar{height:8px}.catalog-row::-webkit-scrollbar-track{background:#f0f4fb;border-radius:999px}.catalog-row::-webkit-scrollbar-thumb{background:#c9d7ee;border-radius:999px}
+    .catalog-product-card{scroll-snap-align:start;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 28px rgba(20,53,143,.055);transition:.22s ease;display:flex;flex-direction:column;min-height:360px}
+    .catalog-product-card:hover{transform:translateY(-4px);border-color:#cfe0ff;box-shadow:0 18px 42px rgba(20,53,143,.10)}
+    .catalog-media{height:158px;background:linear-gradient(135deg,#f7fbff,#e9f4ff);display:grid;place-items:center;position:relative;overflow:hidden}
+    .catalog-media:after{content:"";position:absolute;right:-42px;bottom:-50px;width:150px;height:150px;border-radius:50%;background:rgba(23,101,255,.08)}
+    .catalog-badge{position:absolute;left:14px;top:14px;background:#fff;color:var(--blue);border:1px solid var(--line);border-radius:999px;padding:6px 11px;font-weight:800;font-size:11px;box-shadow:0 8px 18px rgba(20,53,143,.08);z-index:2}
+    .catalog-box{width:92px;height:122px;border-radius:14px;background:linear-gradient(160deg,#fff 0%,#edf6ff 40%,#0f3d9c 41%,#1765ff 100%);box-shadow:0 18px 34px rgba(12,45,126,.14);display:flex;align-items:flex-end;padding:13px;color:#fff;font-weight:900;letter-spacing:-.4px;z-index:1}
+    .catalog-icon-large{width:88px;height:88px;border-radius:26px;background:#fff;color:var(--blue);display:grid;place-items:center;box-shadow:0 18px 34px rgba(12,45,126,.10);z-index:1}
+    .catalog-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
+    .catalog-meta{color:var(--muted);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.35px}
+    .catalog-body h4{margin:0;font-size:20px;color:#102b76;line-height:1.25}
+    .catalog-body p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+    .catalog-price{font-size:23px;font-weight:800;color:var(--blue);margin-top:auto}.catalog-price small{font-size:13px;color:var(--muted);font-weight:600}
+    .catalog-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+    .catalog-actions.single{grid-template-columns:1fr}
+    .coming-card .catalog-media{background:linear-gradient(135deg,#f8fafc,#eef2f7)}
+    .coming-card .catalog-icon-large{color:#667085;background:#fff}
+    .coming-card .catalog-price{color:#667085}
+    @media (max-width:720px){.catalog-section{padding:22px}.catalog-head{display:block}.catalog-head .view-all-link{margin-top:14px}.catalog-row{grid-auto-columns:minmax(235px,82%)}.catalog-actions{grid-template-columns:1fr}}
     @media (max-width:1100px){.products-hero-inner,.product-grid{grid-template-columns:1fr}.category-band{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:720px){.products-hero{padding:44px 22px}.products-hero h1{font-size:38px}.wide-search{height:auto;min-height:54px}.product-grid,.category-band{grid-template-columns:1fr}.product-actions{grid-template-columns:1fr}.cta-strip{display:block}.cta-strip .hero-actions{margin-top:22px}}
   
@@ -291,9 +318,9 @@
         <section id="products">
           <div class="section-head">
             <div>
-              <div class="section-kicker">ALL PRODUCTS</div>
-              <h2>ผลิตภัณฑ์ทั้งหมด</h2>
-              <p class="section-desc">หน้า Listing นี้รองรับการดึงข้อมูลจาก Backend ได้ในอนาคต เช่น ราคา สถานะสินค้า รูปสินค้า Badge และ CTA</p>
+              <div class="section-kicker">SOFTWARE CATALOG</div>
+              <h2>เลือกผลิตภัณฑ์ที่เหมาะกับคุณ</h2>
+              <p class="section-desc">จัดกลุ่มสินค้าเป็นแถวตามหมวด เพื่อให้เลือกง่ายและรองรับการดึงข้อมูลจาก Backend ในอนาคต</p>
             </div>
           </div>
 
@@ -302,114 +329,215 @@
               <button class="filter-pill active"><i data-lucide="grid-2x2" size="16"></i> ทั้งหมด</button>
               <button class="filter-pill">CAD Software</button>
               <button class="filter-pill">Plug-ins</button>
-              <button class="filter-pill">AI</button>
-              <button class="filter-pill">Templates</button>
+              <button class="filter-pill">AI Tools</button>
+              <button class="filter-pill">Coming Soon</button>
             </div>
-            <div class="sort-note">แสดง 6 ผลิตภัณฑ์</div>
+            <div class="sort-note">แสดงตามหมวดสินค้า</div>
           </div>
 
-          <div class="product-grid">
-            <article class="product-card" id="software">
-              <div class="product-media">
-                <span class="product-badge">ขายดีที่สุด</span>
-                <div class="product-box">PTCAD</div>
-              </div>
-              <div class="product-body">
-                <div class="product-meta"><span>CAD Software</span><span>Annual</span></div>
-                <h3>PTCAD Standard</h3>
-                <p>โปรแกรมเขียนแบบ 2D สำหรับงานประจำวัน รองรับ DWG ใช้งานง่าย และเหมาะกับ SME</p>
-                <div class="product-price">4,990 <small>บาท/ปี</small></div>
-                <div class="product-actions">
-                  <a class="small-primary" href="#">ซื้อเลย</a>
-                  <a class="small-secondary" href="#">ดูรายละเอียด</a>
+          <div class="catalog-wrap">
+            <div class="catalog-section" id="software">
+              <div class="catalog-head">
+                <div class="catalog-title">
+                  <div class="catalog-icon"><i data-lucide="monitor"></i></div>
+                  <div>
+                    <h3>CAD Software</h3>
+                    <p>PTCAD Editions สำหรับงานเขียนแบบ 2D</p>
+                  </div>
                 </div>
+                <a class="view-all-link" href="#software">ดูทั้งหมด <i data-lucide="arrow-right" size="18"></i></a>
               </div>
-            </article>
 
-            <article class="product-card">
-              <div class="product-media">
-                <span class="product-badge">เริ่มต้น</span>
-                <div class="product-box">Lite</div>
-              </div>
-              <div class="product-body">
-                <div class="product-meta"><span>CAD Software</span><span>Entry</span></div>
-                <h3>PTCAD Lite</h3>
-                <p>เหมาะสำหรับผู้เริ่มต้น งานเขียนแบบทั่วไป และคนที่ต้องการ CAD ถูกลิขสิทธิ์ในราคาที่เข้าถึงได้</p>
-                <div class="product-price">2,990 <small>บาท/ปี</small></div>
-                <div class="product-actions">
-                  <a class="small-primary" href="#">ซื้อเลย</a>
-                  <a class="small-secondary" href="#">ดูรายละเอียด</a>
-                </div>
-              </div>
-            </article>
+              <div class="catalog-row">
+                <article class="catalog-product-card" data-category="cad-software" data-product-id="ptcad-lite">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">เริ่มต้น</span>
+                    <div class="catalog-box">Lite</div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">CAD Software</div>
+                    <h4>PTCAD Lite</h4>
+                    <p>เหมาะสำหรับผู้เริ่มต้นและงานเขียนแบบทั่วไป</p>
+                    <div class="catalog-price">2,990 <small>บาท/ปี</small></div>
+                    <div class="catalog-actions">
+                      <a class="small-primary" href="#">ซื้อเลย</a>
+                      <a class="small-secondary" href="#">รายละเอียด</a>
+                    </div>
+                  </div>
+                </article>
 
-            <article class="product-card">
-              <div class="product-media">
-                <span class="product-badge">ซื้อขาด</span>
-                <div class="product-box">Pro</div>
-              </div>
-              <div class="product-body">
-                <div class="product-meta"><span>CAD Software</span><span>Perpetual</span></div>
-                <h3>PTCAD Pro</h3>
-                <p>สำหรับผู้ใช้งานที่ต้องการฟีเจอร์ครบกว่า รองรับการใช้งานจริงระยะยาว และ Plug-ins เพิ่มเติม</p>
-                <div class="product-price">9,990 <small>บาท</small></div>
-                <div class="product-actions">
-                  <a class="small-primary" href="#">ซื้อเลย</a>
-                  <a class="small-secondary" href="#">ดูรายละเอียด</a>
-                </div>
-              </div>
-            </article>
+                <article class="catalog-product-card" data-category="cad-software" data-product-id="ptcad-standard">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">ขายดีที่สุด</span>
+                    <div class="catalog-box">PTCAD</div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">CAD Software</div>
+                    <h4>PTCAD Standard</h4>
+                    <p>เวอร์ชันแนะนำสำหรับงานประจำวันและ SME</p>
+                    <div class="catalog-price">4,990 <small>บาท/ปี</small></div>
+                    <div class="catalog-actions">
+                      <a class="small-primary" href="#">ซื้อเลย</a>
+                      <a class="small-secondary" href="#">รายละเอียด</a>
+                    </div>
+                  </div>
+                </article>
 
-            <article class="product-card" id="extensions">
-              <div class="product-media">
-                <span class="product-badge">Plug-in</span>
-                <div class="product-icon-large"><i data-lucide="building-2" size="54"></i></div>
+                <article class="catalog-product-card" data-category="cad-software" data-product-id="ptcad-pro">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">ซื้อขาด</span>
+                    <div class="catalog-box">Pro</div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">CAD Software</div>
+                    <h4>PTCAD Pro</h4>
+                    <p>สำหรับผู้ใช้งานที่ต้องการฟีเจอร์ครบกว่า</p>
+                    <div class="catalog-price">9,990 <small>บาท</small></div>
+                    <div class="catalog-actions">
+                      <a class="small-primary" href="#">ซื้อเลย</a>
+                      <a class="small-secondary" href="#">รายละเอียด</a>
+                    </div>
+                  </div>
+                </article>
               </div>
-              <div class="product-body">
-                <div class="product-meta"><span>Plug-ins</span><span>Civil</span></div>
-                <h3>Civil Promax</h3>
-                <p>เครื่องมือเสริมสำหรับงานโยธา ช่วยเพิ่มความสามารถให้ PTCAD สำหรับงานเฉพาะทาง</p>
-                <div class="product-price">ดูราคา <small>ในหน้าสินค้า</small></div>
-                <div class="product-actions">
-                  <a class="small-primary" href="#">ดูรายละเอียด</a>
-                  <a class="small-secondary" href="#">ขอข้อมูล</a>
-                </div>
-              </div>
-            </article>
+            </div>
 
-            <article class="product-card" id="ai">
-              <div class="product-media">
-                <span class="product-badge">Coming Soon</span>
-                <div class="product-icon-large"><i data-lucide="sparkles" size="54"></i></div>
-              </div>
-              <div class="product-body">
-                <div class="product-meta"><span>AI Tools</span><span>Assistant</span></div>
-                <h3>AI Assistant</h3>
-                <p>เครื่องมือ AI สำหรับช่วยงานเขียนแบบ ค้นหาคำสั่ง และเพิ่มความเร็วในการทำงาน</p>
-                <div class="product-price">Coming Soon</div>
-                <div class="product-actions">
-                  <a class="small-primary" href="#">ดูรายละเอียด</a>
-                  <a class="small-secondary" href="#">แจ้งเตือนฉัน</a>
+            <div class="catalog-section" id="extensions">
+              <div class="catalog-head">
+                <div class="catalog-title">
+                  <div class="catalog-icon"><i data-lucide="blocks"></i></div>
+                  <div>
+                    <h3>Plug-ins</h3>
+                    <p>เครื่องมือเสริมสำหรับเพิ่มความสามารถให้ PTCAD</p>
+                  </div>
                 </div>
+                <a class="view-all-link" href="#extensions">ดูทั้งหมด <i data-lucide="arrow-right" size="18"></i></a>
               </div>
-            </article>
 
-            <article class="product-card" id="templates">
-              <div class="product-media">
-                <span class="product-badge">Coming Soon</span>
-                <div class="product-icon-large"><i data-lucide="layout-template" size="54"></i></div>
+              <div class="catalog-row">
+                <article class="catalog-product-card" data-category="plug-ins" data-product-id="civil-promax">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">Plug-in</span>
+                    <div class="catalog-icon-large"><i data-lucide="building-2" size="48"></i></div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">Plug-ins</div>
+                    <h4>Civil Promax</h4>
+                    <p>ส่วนเสริมสำหรับงานโยธาและงานเฉพาะทาง</p>
+                    <div class="catalog-price">ดูราคา <small>ในหน้าสินค้า</small></div>
+                    <div class="catalog-actions">
+                      <a class="small-primary" href="#">รายละเอียด</a>
+                      <a class="small-secondary" href="#">ขอข้อมูล</a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="catalog-product-card coming-card" data-category="plug-ins" data-product-id="thai-template-pack">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">Coming Soon</span>
+                    <div class="catalog-icon-large"><i data-lucide="layout-template" size="48"></i></div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">Plug-ins</div>
+                    <h4>Thai Template Pack</h4>
+                    <p>เทมเพลตและ Library สำหรับงานเขียนแบบไทย</p>
+                    <div class="catalog-price">Coming Soon</div>
+                    <div class="catalog-actions single">
+                      <a class="small-secondary" href="#">แจ้งเตือนฉัน</a>
+                    </div>
+                  </div>
+                </article>
               </div>
-              <div class="product-body">
-                <div class="product-meta"><span>Templates</span><span>Library</span></div>
-                <h3>Thai Template Pack</h3>
-                <p>เทมเพลตและ Library สำหรับการทำงานเขียนแบบในไทย ช่วยเริ่มงานได้เร็วขึ้น</p>
-                <div class="product-price">Coming Soon</div>
-                <div class="product-actions">
-                  <a class="small-primary" href="#">ดูรายละเอียด</a>
-                  <a class="small-secondary" href="#">แจ้งเตือนฉัน</a>
+            </div>
+
+            <div class="catalog-section" id="ai">
+              <div class="catalog-head">
+                <div class="catalog-title">
+                  <div class="catalog-icon"><i data-lucide="sparkles"></i></div>
+                  <div>
+                    <h3>AI Tools</h3>
+                    <p>เครื่องมือ AI สำหรับช่วยงาน CAD</p>
+                  </div>
+                </div>
+                <a class="view-all-link" href="#ai">ดูทั้งหมด <i data-lucide="arrow-right" size="18"></i></a>
+              </div>
+
+              <div class="catalog-row">
+                <article class="catalog-product-card coming-card" data-category="ai-tools" data-product-id="ai-assistant">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">Coming Soon</span>
+                    <div class="catalog-icon-large"><i data-lucide="sparkles" size="48"></i></div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">AI Tools</div>
+                    <h4>AI Assistant</h4>
+                    <p>ช่วยค้นหาคำสั่งและเพิ่มความเร็วในการเขียนแบบ</p>
+                    <div class="catalog-price">Coming Soon</div>
+                    <div class="catalog-actions single">
+                      <a class="small-secondary" href="#">แจ้งเตือนฉัน</a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="catalog-product-card coming-card" data-category="ai-tools" data-product-id="ai-dwg-checker">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">Coming Soon</span>
+                    <div class="catalog-icon-large"><i data-lucide="scan-search" size="48"></i></div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">AI Tools</div>
+                    <h4>AI DWG Checker</h4>
+                    <p>แนวคิดเครื่องมือช่วยตรวจไฟล์และงานเขียนแบบ</p>
+                    <div class="catalog-price">Coming Soon</div>
+                    <div class="catalog-actions single">
+                      <a class="small-secondary" href="#">แจ้งเตือนฉัน</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="catalog-section" id="coming-soon">
+              <div class="catalog-head">
+                <div class="catalog-title">
+                  <div class="catalog-icon"><i data-lucide="clock-3"></i></div>
+                  <div>
+                    <h3>Coming Soon</h3>
+                    <p>สินค้าและเครื่องมือใหม่ที่จะเพิ่มเข้ามาในระบบ</p>
+                  </div>
                 </div>
               </div>
-            </article>
+
+              <div class="catalog-row">
+                <article class="catalog-product-card coming-card" data-category="coming-soon" data-product-id="smart-blocks">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">Coming Soon</span>
+                    <div class="catalog-icon-large"><i data-lucide="box" size="48"></i></div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">Library</div>
+                    <h4>Smart Blocks</h4>
+                    <p>ชุด Block สำหรับเริ่มงานเขียนแบบได้เร็วขึ้น</p>
+                    <div class="catalog-price">Coming Soon</div>
+                    <div class="catalog-actions single"><a class="small-secondary" href="#">แจ้งเตือนฉัน</a></div>
+                  </div>
+                </article>
+
+                <article class="catalog-product-card coming-card" data-category="coming-soon" data-product-id="pdf-tools">
+                  <div class="catalog-media">
+                    <span class="catalog-badge">Coming Soon</span>
+                    <div class="catalog-icon-large"><i data-lucide="file-stack" size="48"></i></div>
+                  </div>
+                  <div class="catalog-body">
+                    <div class="catalog-meta">Tools</div>
+                    <h4>PDF Tools</h4>
+                    <p>เครื่องมือช่วยจัดการไฟล์ PDF สำหรับงาน CAD</p>
+                    <div class="catalog-price">Coming Soon</div>
+                    <div class="catalog-actions single"><a class="small-secondary" href="#">แจ้งเตือนฉัน</a></div>
+                  </div>
+                </article>
+              </div>
+            </div>
           </div>
         </section>
 
