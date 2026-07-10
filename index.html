@@ -186,6 +186,22 @@
     .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.stars{color:#f5a400;font-weight:800;letter-spacing:2px;margin-bottom:12px}
     .faq-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}.faq-list{display:grid;gap:12px}.faq-item{border:1px solid var(--line);border-radius:16px;padding:18px 20px;background:#fff;display:flex;justify-content:space-between;align-items:center;font-weight:700;color:#102b76}
     .support-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.support-card{text-align:left}
+
+    .hero-quote-link{margin-top:16px;color:var(--muted);font-size:14px;font-weight:600}
+    .hero-quote-link a{display:inline-flex;align-items:center;gap:7px;color:var(--blue);font-weight:800;margin-left:6px}
+    .hero-quote-link a i{transition:.2s ease}
+    .hero-quote-link a:hover i{transform:translateX(4px)}
+    .business-cta{background:linear-gradient(135deg,#eef6ff 0%,#ffffff 55%,#e6f3ff 100%)}
+    .business-card{display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px 38px;box-shadow:0 16px 42px rgba(20,53,143,.08);position:relative;overflow:hidden}
+    .business-card:after{content:"";position:absolute;right:-70px;bottom:-100px;width:240px;height:240px;border-radius:50%;background:rgba(23,101,255,.08)}
+    .business-content{display:flex;gap:18px;align-items:flex-start;position:relative;z-index:1}
+    .business-icon{width:58px;height:58px;border-radius:18px;background:#eef6ff;color:var(--blue);display:grid;place-items:center;flex:none}
+    .business-card h2{font-size:30px;margin:0 0 8px}
+    .business-card p{margin:0;color:var(--muted);line-height:1.7;max-width:720px}
+    .business-points{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;color:#344054;font-size:14px;font-weight:700}
+    .business-points span{display:inline-flex;align-items:center;gap:7px}
+    .business-actions{position:relative;z-index:1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
     footer{padding:46px 68px;background:#102b76;color:white;display:grid;grid-template-columns:1.1fr repeat(3,.7fr);gap:30px}
     footer p, footer a{color:rgba(255,255,255,.72);font-size:14px;line-height:1.8}footer h4{margin:0 0 14px}footer .logo-mark{box-shadow:none}
 
@@ -193,7 +209,7 @@
       .menu{display:none}.search{min-width:220px}.hero{grid-template-columns:1fr}.hero-art{padding-top:0}.trust-grid,.edition-grid,.review-grid,.support-grid{grid-template-columns:repeat(2,1fr)}.plugin-grid,.learn-grid,.faq-wrap{grid-template-columns:1fr}footer{grid-template-columns:1fr 1fr}
     }
     @media (max-width:720px){
-      .page{padding:0;margin:0}.shell{border-radius:0}.nav{height:auto;flex-wrap:wrap;padding:18px}.search{order:5;width:100%;min-width:100%}.buy-btn{padding:0 18px}.hero-left{padding:44px 24px}.hero-title-th{font-size:34px}h1{font-size:54px}.price-line{font-size:27px}.price-line strong{font-size:42px}.bullets{grid-template-columns:1fr}.hero-actions{flex-wrap:wrap}.hero-art{padding:20px 24px 50px}.mockup{height:270px}.box{width:120px;height:190px}.laptop{width:330px;height:220px}.screen{height:170px}.section-head{display:block}section{padding:52px 22px}.trust-grid,.edition-grid,.review-grid,.support-grid{grid-template-columns:1fr}.learn-card.hero-learn{grid-template-columns:1fr}footer{grid-template-columns:1fr;padding:40px 22px}
+      .page{padding:0;margin:0}.shell{border-radius:0}.nav{height:auto;flex-wrap:wrap;padding:18px}.search{order:5;width:100%;min-width:100%}.buy-btn{padding:0 18px}.hero-left{padding:44px 24px}.hero-title-th{font-size:34px}h1{font-size:54px}.price-line{font-size:27px}.price-line strong{font-size:42px}.bullets{grid-template-columns:1fr}.hero-actions{flex-wrap:wrap}.hero-art{padding:20px 24px 50px}.mockup{height:270px}.box{width:120px;height:190px}.laptop{width:330px;height:220px}.screen{height:170px}.section-head{display:block}section{padding:52px 22px}.trust-grid,.edition-grid,.review-grid,.support-grid{grid-template-columns:1fr}.learn-card.hero-learn{grid-template-columns:1fr}.business-card{grid-template-columns:1fr;padding:26px 22px}.business-content{display:block}.business-icon{margin-bottom:16px}.business-actions{align-items:stretch}.business-actions a{width:100%}footer{grid-template-columns:1fr;padding:40px 22px}
     }
   </style>
 </head>
@@ -213,9 +229,9 @@
           <a href="#support">บริการช่วยเหลือ</a>
         </nav>
         <div class="search"><i data-lucide="search" size="18"></i><span>ค้นหาอะไรก็ได้...</span></div>
-        <a class="icon-btn" href="cart.html" aria-label="Cart"><i data-lucide="shopping-cart" size="22"></i></a>
-        <a class="icon-btn" href="member.html" aria-label="Account"><i data-lucide="user" size="22"></i></a>
-        <a class="buy-btn" href="products.html">ซื้อเลย</a>
+        <a class="icon-btn" href="#" aria-label="Cart"><i data-lucide="shopping-cart" size="22"></i></a>
+        <a class="icon-btn" href="#" aria-label="Account"><i data-lucide="user" size="22"></i></a>
+        <a class="buy-btn" href="products.html">ซื้อออนไลน์</a>
       </header>
 
       <main>
@@ -233,8 +249,12 @@
             </div>
             <div class="hero-actions">
               <!-- CTA 1 / CTA 2: เปลี่ยนข้อความและลิงก์ได้จาก Banner Manager -->
-              <a class="primary-btn" href="products.html">ซื้อเลย</a>
-              <a class="secondary-btn" href="#download">ทดลองใช้ฟรี</a>
+              <a class="primary-btn" href="products.html">ซื้อออนไลน์</a>
+              <a class="secondary-btn" href="free-trial.html">ทดลองใช้ฟรี</a>
+            </div>
+            <div class="hero-quote-link">
+              สำหรับองค์กรหรือซื้อหลาย License?
+              <a href="quote-request.html">ขอใบเสนอราคา <i data-lucide="arrow-right" size="16"></i></a>
             </div>
           </div>
           <div class="hero-art" aria-hidden="true">
@@ -400,6 +420,28 @@
               <p>ดาวน์โหลด Trial เพื่อทดลองใช้งานก่อนตัดสินใจซื้อ</p>
               <br><a class="primary-btn" href="#">ดาวน์โหลด Trial</a>
             </article>
+          </div>
+        </section>
+
+
+        <section class="business-cta" id="business-quote">
+          <div class="business-card">
+            <div class="business-content">
+              <div class="business-icon"><i data-lucide="building-2" size="30"></i></div>
+              <div>
+                <div class="section-kicker">FOR BUSINESS</div>
+                <h2>สำหรับองค์กรหรือซื้อหลาย License?</h2>
+                <p>รับใบเสนอราคาอย่างเป็นทางการ พร้อมคำแนะนำการเลือก License ที่เหมาะกับจำนวนผู้ใช้งานและรูปแบบการทำงานของทีมคุณ</p>
+                <div class="business-points">
+                  <span><i data-lucide="check-circle" size="17"></i> ซื้อหลาย License</span>
+                  <span><i data-lucide="check-circle" size="17"></i> ออกใบเสนอราคาในนามบริษัท</span>
+                  <span><i data-lucide="check-circle" size="17"></i> มีทีมงานช่วยแนะนำ</span>
+                </div>
+              </div>
+            </div>
+            <div class="business-actions">
+              <a class="primary-btn" href="quote-request.html"><i data-lucide="file-text" size="18"></i> ขอใบเสนอราคา</a>
+            </div>
           </div>
         </section>
 
